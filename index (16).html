@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Photography — Portfolio</title>
+  <meta name="description" content="Photography portfolio showcasing portraits, weddings, nature and travel.">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa7bd;
+      --accent:#7c3aed;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, sans-serif;
+      background:linear-gradient(180deg,#071025 0%, var(--bg) 100%);
+      color:#e6eef8;
+      padding:32px;
+      display:flex;
+      justify-content:center;
+    }
+    .wrap{width:100%;max-width:var(--maxw)}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    .brand{display:flex;gap:16px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#4f46e5);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .logo span{font-size:20px}
+    nav{display:flex;gap:12px}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
+    nav a:hover{color:#fff;background:var(--glass)}
+
+    main{display:grid;grid-template-columns: 1fr 360px;gap:28px}
+    @media (max-width:980px){main{grid-template-columns: 1fr;}}
+
+    /* Hero */
+    .hero{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:var(--radius)}
+    .avatar{width:96px;height:96px;border-radius:16px;background:#111827;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px}
+    h1{margin:0 0 6px 0;font-size:28px}
+    p.lead{margin:0;color:var(--muted)}
+    .skills{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:8px 12px;background:rgba(255,255,255,0.02);border-radius:999px;font-size:13px;color:var(--muted)}
+
+    .section{margin-top:20px}
+    .section h2{margin:0 0 12px 0;font-size:18px}
+
+    /* Gallery */
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px}
+    .project-figure{height:150px;border-radius:10px;background-size:cover;background-position:center;display:flex;align-items:flex-end;justify-content:center;color:#fff;font-weight:600}
+
+    /* Right Column */
+    aside{position:relative}
+    .profile-card{position:sticky;top:32px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
+    .contact-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+    .contact-item{color:var(--muted)}
+
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center}
+    .modal{background:#071425;padding:20px;border-radius:12px;max-width:720px;width:94%}
+    .modal img{width:100%;border-radius:10px}
+    .close{background:none;border:0;color:#fff;font-size:22px;cursor:pointer;position:absolute;top:20px;right:30px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo"><span>P</span></div>
+        <div>
+          <div style="font-weight:700">My Photography</div>
+          <div class="tiny">Portraits • Weddings • Nature • Travel</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <div class="hero">
+          <div style="display:flex;gap:18px;align-items:center">
+            <div class="avatar">📸</div>
+            <div>
+              <h1>Hi — I'm <span>Photographer Name</span></h1>
+              <p class="lead">Capturing life’s moments through my lens. Specialised in weddings, portraits and travel stories.</p>
+              <div class="skills">
+                <div class="chip">Portraits</div>
+                <div class="chip">Weddings</div>
+                <div class="chip">Nature</div>
+                <div class="chip">Travel</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section" id="about">
+            <h2>About me</h2>
+            <div class="card">
+              <p>I’m a passionate photographer with 5+ years of experience. My goal is to tell stories through timeless and creative photography.</p>
+            </div>
+          </div>
+
+          <div class="section" id="gallery">
+            <h2>Featured Gallery</h2>
+            <div class="projects">
+              <article class="card">
+                <div class="project-figure" style="background-image:url('https://source.unsplash.com/400x300/?portrait')" onclick="openModal(this)">Portraits</div>
+              </article>
+              <article class="card">
+                <div class="project-figure" style="background-image:url('https://source.unsplash.com/400x300/?wedding')" onclick="openModal(this)">Weddings</div>
+              </article>
+              <article class="card">
+                <div class="project-figure" style="background-image:url('https://source.unsplash.com/400x300/?nature')" onclick="openModal(this)">Nature</div>
+              </article>
+              <article class="card">
+                <div class="project-figure" style="background-image:url('https://source.unsplash.com/400x300/?travel')" onclick="openModal(this)">Travel</div>
+              </article>
+            </div>
+          </div>
+
+          <div class="section" id="contact">
+            <h2>Contact</h2>
+            <div class="card">
+              <form onsubmit="return handleContact(event)">
+                <input placeholder="Your Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message"></textarea>
+                <button class="btn primary" type="submit">Send Message</button>
+                <div id="formStatus" class="muted">I'll get back to you soon.</div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside>
+        <div class="profile-card">
+          <h3>Photographer Name</h3>
+          <p class="muted">Based in City, Country — available for shoots & freelance work.</p>
+          <div class="contact-list">
+            <div class="contact-item">📧 youremail@example.com</div>
+            <div class="contact-item">📱 +91 98765 43210</div>
+            <div class="contact-item">📍 City, Country</div>
+          </div>
+        </div>
+        <footer>
+          © <span id="year"></span> My Photography
+        </footer>
+      </aside>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modalRoot" class="modal-backdrop">
+    <div class="modal">
+      <button class="close" onclick="closeModal()">✕</button>
+      <img id="modalImg" src="">
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function openModal(el){
+      document.getElementById('modalImg').src = el.style.backgroundImage.slice(5,-2);
+      document.getElementById('modalRoot').style.display='flex';
+    }
+    function closeModal(){document.getElementById('modalRoot').style.display='none'}
+
+    function handleContact(e){
+      e.preventDefault();
+      document.getElementById('formStatus').textContent="Thanks! This demo does not send emails.";
+      return false;
+    }
+  </script>
+</body>
+</html>
